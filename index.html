@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>GeoHub EARDA</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    body { font-family: Arial, sans-serif; margin: 2em; background: #fafbfc; }
+    h1 { color: #214478; }
+    #desc { margin-bottom: 2em; color: #333; }
+    #csv-title { margin-top: 2em; font-size: 1.2em; color: #214478; }
+    table { border-collapse: collapse; margin-top: 1em; background: #fff; }
+    th, td { border: 1px solid #ddd; padding: 0.5em 1em; }
+    th { background: #f2f2f2; }
+    tr:nth-child(even) { background: #f9f9f9; }
+    #error { color: #a00; }
+  </style>
+</head>
+<body>
+  <h1>GeoHub EARDA</h1>
+  <div id="desc">This basic site hosts openly accessible EAR DA data.</div>
+
+  <div id="csv-title">Station Number.csv Data</div>
+  <div id="table-container"></div>
+  <div id="error"></div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.2/papaparse.min.js"></script>
+  <script>
+    // Tries to fetch and display the CSV file in a table
+    fetch('Station%20Number.csv')
+      .then(response => {
+        if (!response.ok) throw new Error("CSV file not found. Make sure 'Station Number.csv' is in the repo root.");
+        return response.text();
+      })
+      .then(csv => {
+        const results = Papa.parse(csv, { header: true });
+        if (results.data.length === 0 || Object.keys(results.data[0]).length < 1) {
+          document.getElementById('error').textContent = "CSV file is empty or has no data.";
+          return;
+        }
+        const table = document.createElement('table');
+        // Table header
+        const headerRow = document.createElement('tr');
+        Object.keys(results.data[0]).forEach(col => {
+          const th = document.createElement('th');
+          th.textContent = col;
+          headerRow.appendChild(th);
+        });
+        table.appendChild(headerRow);
+        // Table rows
+        results.data.forEach(row => {
+          // Skip empty rows (can happen with PapaParse)
+          if (Object.values(row).every(val => val === "")) return;
+          const tr = document.createElement('tr');
+          Object.values(row).forEach(val => {
+            const td = document.createElement('td');
+            td.textContent = val;
+            tr.appendChild(td);
+          });
+          table.appendChild(tr);
+        });
+        document.getElementById('table-container').appendChild(table);
+      })
+      .catch(error => {
+        document.getElementById('error').textContent = error.message;
+      });
+  </script>
+</body>
+</html>
