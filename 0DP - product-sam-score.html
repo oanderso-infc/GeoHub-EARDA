@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>SAM Score Approximation Project | GeoHub EARDA</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    body { font-family: Arial, sans-serif; margin: 2em; background: #fafbfc; }
+    nav { background: #214478; padding: 1em; margin: -2em -2em 2em -2em; text-align: center; }
+    nav a { color: #fff; text-decoration: none; margin: 0 1.2em; font-weight: bold; padding: 0.3em 1em; border-radius: 4px; transition: background 0.2s;}
+    nav a:hover, nav a.active { background: #18325d; }
+    .container { background: #fff; padding: 2em; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.03);}
+    h1 { color: #214478; }
+    .desc { margin-bottom: 2em; }
+    .sample-images { margin: 1em 0 2em 0; display: flex; flex-wrap: wrap; gap: 1.5em; }
+    .sample-images img { max-width: 320px; width: 100%; height: auto; border-radius: 4px; box-shadow: 0 1px 6px rgba(0,0,0,0.08); }
+    .download-link { display: inline-block; margin-top: 1em; padding: 0.7em 1.6em; background: #214478; color: #fff; text-decoration: none; border-radius: 5px; font-weight: bold; transition: background 0.2s;}
+    .download-link:hover { background: #18325d;}
+  </style>
+</head>
+<body>
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="census.html">Census Data</a>
+    <a href="infrastructure.html">Infrastructure Data</a>
+    <a href="climate.html">Climate Data</a>
+    <a href="transportation.html">Transportation Data</a>
+    <a href="other-index.html">Other Index Data</a>
+  </nav>
+  <div class="container">
+    <h1>SAM Score Approximation Project</h1>
+    <div class="desc">
+      <strong>Description:</strong><br>
+      The SAM Score Approximation Project provides an open dataset and visualizations for estimating Station Accessibility Measures (SAM) scores. The data product includes station-level metrics and visual samples for use in accessibility and equity analyses.
+    </div>
+    <div>
+      <strong>Sample Images:</strong>
+      <div class="sample-images" id="sample-images"></div>
+    </div>
+    <a class="download-link" href="data/SAM%20Approximaiton/Subway%20Stations%20wo%205%20YU%20Sample%20Stations.gpkg" download>
+      Download Data (GeoPackage)
+    </a>
+  </div>
+
+  <script>
+    // List of sample images manually defined (since static GitHub Pages can’t list files dynamically)
+    // Replace/add filenames if you add/remove images in the folder
+    const imageFilenames = [
+      "station-sample-1.png",
+      "station-sample-2.png",
+      "heatmap-sample.png"
+      // Add more .png filenames as needed, e.g., "something.png"
+    ];
+    const imagePath = "data/SAM%20Approximaiton/";
+
+    const imgContainer = document.getElementById('sample-images');
+    imageFilenames.forEach(filename => {
+      const img = document.createElement('img');
+      img.src = imagePath + encodeURIComponent(filename).replace(/%2F/g, '/');
+      img.alt = filename;
+      imgContainer.appendChild(img);
+    });
+  </script>
+</body>
+</html>
