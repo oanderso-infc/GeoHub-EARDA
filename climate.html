@@ -8,16 +8,23 @@
     body { font-family: Arial, sans-serif; margin: 2em; background: #fafbfc; }
     nav { background: #214478; padding: 1em; margin: -2em -2em 2em -2em; text-align: center; }
     nav a {
-      color: #fff;
-      text-decoration: none;
-      margin: 0 1.2em;
-      font-weight: bold;
-      padding: 0.3em 1em;
-      border-radius: 4px;
-      transition: background 0.2s;
+      color: #fff; text-decoration: none; margin: 0 1.2em; font-weight: bold;
+      padding: 0.3em 1em; border-radius: 4px; transition: background 0.2s;
     }
     nav a:hover, nav a.active { background: #18325d; }
     h1 { color: #214478; }
+    .catalog { display: flex; flex-direction: column; gap: 2em; margin-top: 2em; max-width: 800px;}
+    .catalog-link { text-decoration: none; color: inherit; display: block; width: 100%;}
+    .catalog-entry {
+      display: flex; align-items: center; background: #fff; border-radius: 10px;
+      box-shadow: 0 2px 10px rgba(33,68,120,0.07); padding: 1.2em 1.7em;
+      transition: box-shadow 0.2s, background 0.2s; border-left: 6px solid #214478; min-height: 80px;
+    }
+    .catalog-entry:hover { box-shadow: 0 4px 18px rgba(33,68,120,0.13); background: #f2f8ff; }
+    .catalog-icon { width: 64px; height: 64px; margin-right: 2em; flex-shrink: 0; border-radius: 8px; object-fit: cover; background: #e5eaf3; border: 1px solid #e2e2e2;}
+    .catalog-content { flex: 1; }
+    .catalog-title { margin: 0; font-size: 1.22em; color: #214478; font-weight: bold; }
+    .catalog-desc { margin: 0.5em 0 0 0; color: #555; font-size: 1em; }
   </style>
 </head>
 <body>
@@ -32,7 +39,46 @@
   </nav>
   <h1>Climate Data</h1>
   <p>
-    Explore open climate data, including temperature, precipitation, flood risk, and more for environmental assessment.
+    Discover open datasets for climate trends, hazards, and adaptation planning.
   </p>
+  <div class="catalog">
+
+    <a href="https://en.wikipedia.org/wiki/Flood_risk_assessment" target="_blank" class="catalog-link" title="Flood Susceptibility (Wikipedia)">
+      <div class="catalog-entry">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/1/19/Weather_icon_-_rain.svg" alt="Flood Risk" class="catalog-icon">
+        <div class="catalog-content">
+          <div class="catalog-title">Flood Susceptibility Index</div>
+          <div class="catalog-desc">
+            Raster index for identifying flood-prone zones based on topography and rainfall data.
+          </div>
+        </div>
+      </div>
+    </a>
+
+    <a href="https://en.wikipedia.org/wiki/Climate_of_Canada" target="_blank" class="catalog-link" title="Climate of Canada (Wikipedia)">
+      <div class="catalog-entry">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/c/c3/Temperature_icon.png" alt="Temperature" class="catalog-icon">
+        <div class="catalog-content">
+          <div class="catalog-title">Temperature Trends</div>
+          <div class="catalog-desc">
+            Time series and spatial grids for monthly and annual mean temperature.
+          </div>
+        </div>
+      </div>
+    </a>
+
+    <a href="https://en.wikipedia.org/wiki/Precipitation" target="_blank" class="catalog-link" title="Precipitation (Wikipedia)">
+      <div class="catalog-entry">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/5/53/Raindrop_icon.svg" alt="Precipitation" class="catalog-icon">
+        <div class="catalog-content">
+          <div class="catalog-title">Precipitation Patterns</div>
+          <div class="catalog-desc">
+            Annual and seasonal precipitation maps for long-term trend analysis.
+          </div>
+        </div>
+      </div>
+    </a>
+
+  </div>
 </body>
 </html>
