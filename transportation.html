@@ -18,21 +18,8 @@
     }
     nav a:hover, nav a.active { background: #18325d; }
     h1 { color: #214478; }
-  </style>
-</head>
-<body>
-  <nav>
-    <a href="index.html">Home</a>
-    <a href="about.html">About</a>
-    <a href="census.html">Census Data</a>
-    <a href="infrastructure.html">Infrastructure Data</a>
-    <a href="climate.html">Climate Data</a>
-    <a href="transportation.html" class="active">Transportation Data</a>
-    <a href="other-index.html">Other Index Data</a>
 
-    <!-- Transportation Data page - catalog entry for SAM Score Approximation Project -->
-    
-    <style>
+    /* Catalog styles */
     .catalog {
       display: flex;
       flex-direction: column;
@@ -47,7 +34,7 @@
       border-radius: 10px;
       box-shadow: 0 2px 10px rgba(33,68,120,0.07);
       padding: 1.2em 1.7em;
-      transition: box-shadow 0.2s;
+      transition: box-shadow 0.2s, background 0.2s;
       border-left: 6px solid #214478;
     }
     .catalog-entry:hover {
@@ -84,30 +71,41 @@
       width: 100%;
       height: 100%;
     }
-    </style>
-    
-    <div class="catalog">
-    
-      <a href="0DP%20-%20product-sam-score.html" class="catalog-link" title="View SAM Score Approximation Project">
-        <div class="catalog-entry">
-          <img src="data/SAM%20Approximaiton/station-sample-1.png" alt="SAM Score Sample" class="catalog-icon">
-          <div class="catalog-content">
-            <div class="catalog-title">SAM Score Approximation Project</div>
-            <div class="catalog-desc">
-              View and download the Station Accessibility Measure (SAM) score dataset and sample visualizations for rapid transit stations.<br>
-              <span style="font-size: 0.97em; color: #2277cc;">Includes GeoPackage data &amp; PNG visual samples.</span>
-            </div>
-          </div>
-        </div>
-      </a>
-    
-    </div>
-
-    
+  </style>
+</head>
+<body>
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="census.html">Census Data</a>
+    <a href="infrastructure.html">Infrastructure Data</a>
+    <a href="climate.html">Climate Data</a>
+    <a href="transportation.html" class="active">Transportation Data</a>
+    <a href="other-index.html">Other Index Data</a>
   </nav>
   <h1>Transportation Data</h1>
   <p>
     View transportation-related datasets, including transit lines, stations, routes, and accessibility information.
   </p>
+
+  <div class="catalog">
+
+    <!-- SAM Score Approximation Project entry -->
+    <a href="0DP%20-%20product-sam-score.html" class="catalog-link" title="View SAM Score Approximation Project">
+      <div class="catalog-entry">
+        <img src="data/SAM%20Approximaiton/station-sample-1.png" alt="SAM Score Sample" class="catalog-icon">
+        <div class="catalog-content">
+          <div class="catalog-title">SAM Score Approximation Project</div>
+          <div class="catalog-desc">
+            View and download the Station Accessibility Measure (SAM) score dataset and sample visualizations for rapid transit stations.<br>
+            <span style="font-size: 0.97em; color: #2277cc;">Includes GeoPackage data &amp; PNG visual samples.</span>
+          </div>
+        </div>
+      </div>
+    </a>
+
+    <!-- You can add more catalog entries below in the same format! -->
+
+  </div>
 </body>
 </html>
