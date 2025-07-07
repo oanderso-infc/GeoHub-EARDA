@@ -6,7 +6,21 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <style>
     body { font-family: Arial, sans-serif; margin: 2em; background: #fafbfc; }
-    nav { background: #214478; padding: 1em; margin: -2em -2em 2em -2em; text-align: center; }
+    .flag-logo {
+      display: block;
+      position: absolute;
+      top: 24px;
+      left: 30px;
+      width: 52px;
+      height: auto;
+      border-radius: 7px;
+      box-shadow: 0 1px 4px rgba(50,50,50,0.12);
+      z-index: 10;
+    }
+    @media (max-width: 600px) {
+      .flag-logo { top: 16px; left: 10px; width: 38px; }
+    }
+    nav { background: #214478; padding: 1em; margin: -2em -2em 2em -2em; text-align: center; margin-left: 80px !important; }
     nav a {
       color: #fff;
       text-decoration: none;
@@ -76,9 +90,11 @@
       color: #555;
       font-size: 0.99em;
     }
+    .empty-msg { color: #999; font-size: 1em; margin-bottom: 2em; }
   </style>
 </head>
 <body>
+  <img src="images/Canada%20flag.png" alt="Canada Flag" class="flag-logo">
   <nav>
     <a href="index.html" class="active">Home</a>
     <a href="about.html">About</a>
@@ -98,133 +114,82 @@
   <div class="category-desc">
     Census Data includes population, socioeconomic, and demographic variables sourced from the latest national census. Use these datasets for community profiles, deprivation studies, and more.
   </div>
-  <div class="catalog">
-    <a href="product-census-blocks.html" class="catalog-link" title="View Census Blocks 2021">
-      <div class="catalog-entry">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/8/88/Map_icon.png" alt="Census Blocks" class="catalog-icon">
-        <div class="catalog-content">
-          <div class="catalog-title">Census Blocks (2021)</div>
-          <div class="catalog-desc">
-            Vector boundaries and key indicators for all census blocks in the study area. Includes population, age, and household characteristics.
-          </div>
-        </div>
-      </div>
-    </a>
-    <!-- Add more census entries here -->
-  </div>
+  <div id="census-entries" class="catalog"></div>
 
   <!-- Infrastructure Data Section -->
   <h2 id="infrastructure-data">Infrastructure Data</h2>
   <div class="category-desc">
     Infrastructure Data features spatial layers for public assets, utilities, and critical infrastructure networks. Useful for resilience assessment, capital planning, and service area analysis.
   </div>
-  <div class="catalog">
-    <a href="product-public-facilities.html" class="catalog-link" title="View Public Facilities Inventory">
-      <div class="catalog-entry">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/7/73/Infrastructure_icon.png" alt="Public Facilities" class="catalog-icon">
-        <div class="catalog-content">
-          <div class="catalog-title">Public Facilities Inventory</div>
-          <div class="catalog-desc">
-            Comprehensive spatial database of public buildings, health, and educational facilities for the region.
-          </div>
-        </div>
-      </div>
-    </a>
-    <!-- Add more infrastructure entries here -->
-  </div>
+  <div id="infrastructure-entries" class="catalog"></div>
 
   <!-- Climate Data Section -->
   <h2 id="climate-data">Climate Data</h2>
   <div class="category-desc">
     Climate Data includes open geospatial datasets on precipitation, temperature, flood risk, and other environmental hazards. Suitable for climate risk mapping and adaptation research.
   </div>
-  <div class="catalog">
-    <a href="product-flood-susceptibility.html" class="catalog-link" title="View Flood Susceptibility Index">
-      <div class="catalog-entry">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/1/19/Weather_icon_-_rain.svg" alt="Flood Susceptibility" class="catalog-icon">
-        <div class="catalog-content">
-          <div class="catalog-title">Flood Susceptibility Index</div>
-          <div class="catalog-desc">
-            Raster-based index of flood susceptibility for urban and peri-urban areas. Useful for risk assessments and policy support.
-          </div>
-        </div>
-      </div>
-    </a>
-    <!-- Add more climate entries here -->
-  </div>
+  <div id="climate-entries" class="catalog"></div>
 
   <!-- Transportation Data Section -->
   <h2 id="transportation-data">Transportation Data</h2>
   <div class="category-desc">
     Transportation Data features datasets for transit lines, stations, accessibility metrics, and more. Analyze mobility, connectivity, and equity across the network.
   </div>
-  <div class="catalog">
+  <div id="transportation-entries" class="catalog"></div>
 
-    <!-- SAM Score Approximation Project entry -->
-    <a href="0DP%20-%20product-sam-score.html" class="catalog-link" title="View SAM Score Approximation Project">
-      <div class="catalog-entry">
-        <img src="data/SAM%20Approximaiton/station-sample-1.png" alt="SAM Score Sample" class="catalog-icon">
-        <div class="catalog-content">
-          <div class="catalog-title">SAM Score Approximation Project</div>
-          <div class="catalog-desc">
-            Station Accessibility Measure (SAM) scores and visualizations for rapid transit stations.
-          </div>
-        </div>
-      </div>
-    </a>
-
-    <!-- Placeholder/Example Entry 1 -->
-    <a href="product-multimodal-network.html" class="catalog-link" title="View Multi-Modal Network Example">
-      <div class="catalog-entry">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/5/5c/Generic_train_icon.png" alt="Multi-Modal" class="catalog-icon">
-        <div class="catalog-content">
-          <div class="catalog-title">Multi-Modal Network Example</div>
-          <div class="catalog-desc">
-            Sample dataset for integrated multi-modal transit networks, including bus, subway, and cycling connections.
-          </div>
-        </div>
-      </div>
-    </a>
-
-    <!-- Placeholder/Example Entry 2 -->
-    <a href="product-transit-ridership.html" class="catalog-link" title="View Transit Ridership Trends">
-      <div class="catalog-entry">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e7/Bus-icon.svg/1024px-Bus-icon.svg.png" alt="Ridership Trends" class="catalog-icon">
-        <div class="catalog-content">
-          <div class="catalog-title">Transit Ridership Trends</div>
-          <div class="catalog-desc">
-            Data visualizing annual and monthly ridership for key transit lines and stations from 2010-2023.
-          </div>
-        </div>
-      </div>
-    </a>
-
-    <!-- Placeholder/Example Entry 3 -->
-    <a href="product-active-transport.html" class="catalog-link" title="View Active Transportation Paths">
-      <div class="catalog-entry">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/0/0c/Cycling_icon.png" alt="Active Transportation" class="catalog-icon">
-        <div class="catalog-content">
-          <div class="catalog-title">Active Transportation Paths</div>
-          <div class="catalog-desc">
-            Sample layer of cycling lanes, multi-use trails, and pedestrian pathways for assessing non-motorized mobility.
-          </div>
-        </div>
-      </div>
-    </a>
-
-    <!-- Placeholder/Example Entry 4 -->
-    <a href="product-accessibility-index.html" class="catalog-link" title="View Accessibility Index by Station">
-      <div class="catalog-entry">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/c/cb/Map_marker_icon_%E2%80%93_Nicolas_Mollet_%E2%80%93_Transport_Train_Station_%E2%80%93_Transportation_%E2%80%93_White.png" alt="Accessibility Index" class="catalog-icon">
-        <div class="catalog-content">
-          <div class="catalog-title">Accessibility Index by Station</div>
-          <div class="catalog-desc">
-            Example accessibility index for subway and commuter rail stations, highlighting essential services proximity.
-          </div>
-        </div>
-      </div>
-    </a>
-
-  </div>
+  <script>
+    const categories = {
+      Census: document.getElementById('census-entries'),
+      Infrastructure: document.getElementById('infrastructure-entries'),
+      Climate: document.getElementById('climate-entries'),
+      Transportation: document.getElementById('transportation-entries')
+    };
+    function createCatalogEntry(entry) {
+      const catalogLink = document.createElement('a');
+      catalogLink.className = 'catalog-link';
+      catalogLink.href = entry.url;
+      catalogLink.title = entry.title;
+      // Open external URLs in new tab
+      if (/^https?:\/\//.test(entry.url)) catalogLink.target = "_blank";
+      const catalogEntry = document.createElement('div');
+      catalogEntry.className = 'catalog-entry';
+      const icon = document.createElement('img');
+      icon.className = 'catalog-icon';
+      icon.src = entry.icon;
+      icon.alt = entry.title;
+      const content = document.createElement('div');
+      content.className = 'catalog-content';
+      content.innerHTML = `<div class="catalog-title">${entry.title}</div>
+        <div class="catalog-desc">${entry.desc}</div>`;
+      catalogEntry.appendChild(icon);
+      catalogEntry.appendChild(content);
+      catalogLink.appendChild(catalogEntry);
+      return catalogLink;
+    }
+    fetch('entries.json')
+      .then(resp => resp.json())
+      .then(entries => {
+        // Clear previous entries
+        Object.values(categories).forEach(catDiv => catDiv.innerHTML = '');
+        entries.forEach(entry => {
+          if (categories[entry.category]) {
+            categories[entry.category].appendChild(createCatalogEntry(entry));
+          }
+        });
+        Object.entries(categories).forEach(([cat, catDiv]) => {
+          if (!catDiv.children.length) {
+            const msg = document.createElement('div');
+            msg.className = 'empty-msg';
+            msg.textContent = 'No data products available yet.';
+            catDiv.appendChild(msg);
+          }
+        });
+      })
+      .catch(() => {
+        Object.values(categories).forEach(catDiv => {
+          catDiv.innerHTML = '<div class="empty-msg">Failed to load data entries.</div>';
+        });
+      });
+  </script>
 </body>
 </html>
