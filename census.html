@@ -7,50 +7,14 @@
   <style>
     body { font-family: Arial, sans-serif; margin: 2em; background: #fafbfc; }
     nav { background: #214478; padding: 1em; margin: -2em -2em 2em -2em; text-align: center; }
-    nav a {
-      color: #fff; text-decoration: none; margin: 0 1.2em; font-weight: bold;
-      padding: 0.3em 1em; border-radius: 4px; transition: background 0.2s;
-    }
+    nav a { color: #fff; text-decoration: none; margin: 0 1.2em; font-weight: bold; padding: 0.3em 1em; border-radius: 4px; transition: background 0.2s; }
     nav a:hover, nav a.active { background: #18325d; }
     h1 { color: #214478; }
-    .catalog {
-      display: flex;
-      flex-direction: column;
-      gap: 1.5em;
-      margin-top: 2em;
-      max-width: 800px;
-    }
-    .catalog-link {
-      display: block;
-      width: 100%;
-      text-decoration: none;
-      color: inherit;
-    }
-    .catalog-entry {
-      display: flex;
-      align-items: center;
-      background: #fff;
-      border-radius: 10px;
-      box-shadow: 0 2px 10px rgba(33,68,120,0.07);
-      padding: 1.2em 1.7em;
-      border-left: 6px solid #214478;
-      transition: box-shadow 0.2s, background 0.2s;
-      min-height: 70px;
-    }
-    .catalog-entry:hover {
-      box-shadow: 0 4px 18px rgba(33,68,120,0.13);
-      background: #f2f8ff;
-    }
-    .catalog-icon {
-      width: 64px;
-      height: 64px;
-      margin-right: 2em;
-      flex-shrink: 0;
-      border-radius: 8px;
-      object-fit: cover;
-      background: #e5eaf3;
-      border: 1px solid #e2e2e2;
-    }
+    .catalog { display: flex; flex-direction: column; gap: 1.5em; margin-top: 2em; max-width: 800px;}
+    .catalog-link { display: block; width: 100%; text-decoration: none; color: inherit;}
+    .catalog-entry { display: flex; align-items: center; background: #fff; border-radius: 10px; box-shadow: 0 2px 10px rgba(33,68,120,0.07); padding: 1.2em 1.7em; border-left: 6px solid #214478; transition: box-shadow 0.2s, background 0.2s; min-height: 70px;}
+    .catalog-entry:hover { box-shadow: 0 4px 18px rgba(33,68,120,0.13); background: #f2f8ff; }
+    .catalog-icon { width: 64px; height: 64px; margin-right: 2em; flex-shrink: 0; border-radius: 8px; object-fit: cover; background: #e5eaf3; border: 1px solid #e2e2e2;}
     .catalog-content { flex: 1; }
     .catalog-title { margin: 0; font-size: 1.18em; color: #214478; font-weight: bold; }
     .catalog-desc { margin: 0.4em 0 0 0; color: #555; font-size: 1em; }
@@ -73,9 +37,7 @@
   </p>
   <div id="category-entries" class="catalog"></div>
   <script>
-    // Set the category to display for this page:
     const category = "Census";
-    // Fetch and display entries
     fetch('entries.json')
       .then(resp => resp.json())
       .then(entries => {
@@ -91,25 +53,20 @@
           catalogLink.className = 'catalog-link';
           catalogLink.href = entry.url;
           catalogLink.title = entry.title;
-          catalogLink.target = "_blank"; // Open in new tab for external links
-
+          catalogLink.target = "_blank";
           const catalogEntry = document.createElement('div');
           catalogEntry.className = 'catalog-entry';
-
           const icon = document.createElement('img');
           icon.className = 'catalog-icon';
           icon.src = entry.icon;
           icon.alt = entry.title;
-
           const content = document.createElement('div');
           content.className = 'catalog-content';
           content.innerHTML = `<div class="catalog-title">${entry.title}</div>
             <div class="catalog-desc">${entry.desc}</div>`;
-
           catalogEntry.appendChild(icon);
           catalogEntry.appendChild(content);
           catalogLink.appendChild(catalogEntry);
-
           container.appendChild(catalogLink);
         });
       })
