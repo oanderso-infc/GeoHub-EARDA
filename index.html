@@ -18,13 +18,64 @@
     }
     nav a:hover, nav a.active { background: #18325d; }
     h1 { color: #214478; }
-    #desc { margin-bottom: 2em; color: #333; }
-    #csv-title { margin-top: 2em; font-size: 1.2em; color: #214478; }
-    table { border-collapse: collapse; margin-top: 1em; background: #fff; }
-    th, td { border: 1px solid #ddd; padding: 0.5em 1em; }
-    th { background: #f2f2f2; }
-    tr:nth-child(even) { background: #f9f9f9; }
-    #error { color: #a00; }
+    h2 { color: #214478; margin-top: 2.5em; }
+    .category-desc {
+      font-size: 1.04em;
+      color: #435;
+      margin-bottom: 1.3em;
+    }
+    .catalog {
+      display: flex;
+      flex-direction: column;
+      gap: 1.3em;
+      max-width: 800px;
+      margin-bottom: 2em;
+    }
+    .catalog-link {
+      text-decoration: none;
+      color: inherit;
+      display: block;
+      width: 100%;
+    }
+    .catalog-entry {
+      display: flex;
+      align-items: center;
+      background: #fff;
+      border-radius: 10px;
+      box-shadow: 0 2px 10px rgba(33,68,120,0.07);
+      padding: 1em 1.5em;
+      transition: box-shadow 0.2s, background 0.2s;
+      border-left: 6px solid #214478;
+      min-height: 70px;
+    }
+    .catalog-entry:hover {
+      box-shadow: 0 4px 18px rgba(33,68,120,0.13);
+      background: #f2f8ff;
+    }
+    .catalog-icon {
+      width: 48px;
+      height: 48px;
+      margin-right: 1.3em;
+      flex-shrink: 0;
+      border-radius: 7px;
+      object-fit: cover;
+      background: #e5eaf3;
+      border: 1px solid #e2e2e2;
+    }
+    .catalog-content {
+      flex: 1;
+    }
+    .catalog-title {
+      margin: 0;
+      font-size: 1.12em;
+      color: #214478;
+      font-weight: bold;
+    }
+    .catalog-desc {
+      margin: 0.3em 0 0 0;
+      color: #555;
+      font-size: 0.99em;
+    }
   </style>
 </head>
 <body>
@@ -38,51 +89,142 @@
     <a href="other-index.html">Other Index Data</a>
   </nav>
   <h1>GeoHub EARDA</h1>
-  <div id="desc">This basic site hosts openly accessible EAR DA data.</div>
+  <div style="max-width:800px; margin-bottom:2em; color:#333;">
+    This site hosts openly accessible Environmental Assessment and Reporting Data Area (EARDA) data products for spatial analysis and planning. Browse categorized datasets and access project-specific documentation.
+  </div>
 
-  <div id="csv-title">Station Number.csv Data</div>
-  <div id="table-container"></div>
-  <div id="error"></div>
+  <!-- Census Data Section -->
+  <h2 id="census-data">Census Data</h2>
+  <div class="category-desc">
+    Census Data includes population, socioeconomic, and demographic variables sourced from the latest national census. Use these datasets for community profiles, deprivation studies, and more.
+  </div>
+  <div class="catalog">
+    <a href="product-census-blocks.html" class="catalog-link" title="View Census Blocks 2021">
+      <div class="catalog-entry">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/8/88/Map_icon.png" alt="Census Blocks" class="catalog-icon">
+        <div class="catalog-content">
+          <div class="catalog-title">Census Blocks (2021)</div>
+          <div class="catalog-desc">
+            Vector boundaries and key indicators for all census blocks in the study area. Includes population, age, and household characteristics.
+          </div>
+        </div>
+      </div>
+    </a>
+    <!-- Add more census entries here -->
+  </div>
 
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.2/papaparse.min.js"></script>
-  <script>
-    // Tries to fetch and display the CSV file in a table
-    fetch('Station%20Number.csv')
-      .then(response => {
-        if (!response.ok) throw new Error("CSV file not found. Make sure 'Station Number.csv' is in the repo root.");
-        return response.text();
-      })
-      .then(csv => {
-        const results = Papa.parse(csv, { header: true });
-        if (results.data.length === 0 || Object.keys(results.data[0]).length < 1) {
-          document.getElementById('error').textContent = "CSV file is empty or has no data.";
-          return;
-        }
-        const table = document.createElement('table');
-        // Table header
-        const headerRow = document.createElement('tr');
-        Object.keys(results.data[0]).forEach(col => {
-          const th = document.createElement('th');
-          th.textContent = col;
-          headerRow.appendChild(th);
-        });
-        table.appendChild(headerRow);
-        // Table rows
-        results.data.forEach(row => {
-          if (Object.values(row).every(val => val === "")) return;
-          const tr = document.createElement('tr');
-          Object.values(row).forEach(val => {
-            const td = document.createElement('td');
-            td.textContent = val;
-            tr.appendChild(td);
-          });
-          table.appendChild(tr);
-        });
-        document.getElementById('table-container').appendChild(table);
-      })
-      .catch(error => {
-        document.getElementById('error').textContent = error.message;
-      });
-  </script>
+  <!-- Infrastructure Data Section -->
+  <h2 id="infrastructure-data">Infrastructure Data</h2>
+  <div class="category-desc">
+    Infrastructure Data features spatial layers for public assets, utilities, and critical infrastructure networks. Useful for resilience assessment, capital planning, and service area analysis.
+  </div>
+  <div class="catalog">
+    <a href="product-public-facilities.html" class="catalog-link" title="View Public Facilities Inventory">
+      <div class="catalog-entry">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/7/73/Infrastructure_icon.png" alt="Public Facilities" class="catalog-icon">
+        <div class="catalog-content">
+          <div class="catalog-title">Public Facilities Inventory</div>
+          <div class="catalog-desc">
+            Comprehensive spatial database of public buildings, health, and educational facilities for the region.
+          </div>
+        </div>
+      </div>
+    </a>
+    <!-- Add more infrastructure entries here -->
+  </div>
+
+  <!-- Climate Data Section -->
+  <h2 id="climate-data">Climate Data</h2>
+  <div class="category-desc">
+    Climate Data includes open geospatial datasets on precipitation, temperature, flood risk, and other environmental hazards. Suitable for climate risk mapping and adaptation research.
+  </div>
+  <div class="catalog">
+    <a href="product-flood-susceptibility.html" class="catalog-link" title="View Flood Susceptibility Index">
+      <div class="catalog-entry">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/1/19/Weather_icon_-_rain.svg" alt="Flood Susceptibility" class="catalog-icon">
+        <div class="catalog-content">
+          <div class="catalog-title">Flood Susceptibility Index</div>
+          <div class="catalog-desc">
+            Raster-based index of flood susceptibility for urban and peri-urban areas. Useful for risk assessments and policy support.
+          </div>
+        </div>
+      </div>
+    </a>
+    <!-- Add more climate entries here -->
+  </div>
+
+  <!-- Transportation Data Section -->
+  <h2 id="transportation-data">Transportation Data</h2>
+  <div class="category-desc">
+    Transportation Data features datasets for transit lines, stations, accessibility metrics, and more. Analyze mobility, connectivity, and equity across the network.
+  </div>
+  <div class="catalog">
+
+    <!-- SAM Score Approximation Project entry -->
+    <a href="0DP%20-%20product-sam-score.html" class="catalog-link" title="View SAM Score Approximation Project">
+      <div class="catalog-entry">
+        <img src="data/SAM%20Approximaiton/station-sample-1.png" alt="SAM Score Sample" class="catalog-icon">
+        <div class="catalog-content">
+          <div class="catalog-title">SAM Score Approximation Project</div>
+          <div class="catalog-desc">
+            Station Accessibility Measure (SAM) scores and visualizations for rapid transit stations.
+          </div>
+        </div>
+      </div>
+    </a>
+
+    <!-- Placeholder/Example Entry 1 -->
+    <a href="product-multimodal-network.html" class="catalog-link" title="View Multi-Modal Network Example">
+      <div class="catalog-entry">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/5/5c/Generic_train_icon.png" alt="Multi-Modal" class="catalog-icon">
+        <div class="catalog-content">
+          <div class="catalog-title">Multi-Modal Network Example</div>
+          <div class="catalog-desc">
+            Sample dataset for integrated multi-modal transit networks, including bus, subway, and cycling connections.
+          </div>
+        </div>
+      </div>
+    </a>
+
+    <!-- Placeholder/Example Entry 2 -->
+    <a href="product-transit-ridership.html" class="catalog-link" title="View Transit Ridership Trends">
+      <div class="catalog-entry">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e7/Bus-icon.svg/1024px-Bus-icon.svg.png" alt="Ridership Trends" class="catalog-icon">
+        <div class="catalog-content">
+          <div class="catalog-title">Transit Ridership Trends</div>
+          <div class="catalog-desc">
+            Data visualizing annual and monthly ridership for key transit lines and stations from 2010-2023.
+          </div>
+        </div>
+      </div>
+    </a>
+
+    <!-- Placeholder/Example Entry 3 -->
+    <a href="product-active-transport.html" class="catalog-link" title="View Active Transportation Paths">
+      <div class="catalog-entry">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/0/0c/Cycling_icon.png" alt="Active Transportation" class="catalog-icon">
+        <div class="catalog-content">
+          <div class="catalog-title">Active Transportation Paths</div>
+          <div class="catalog-desc">
+            Sample layer of cycling lanes, multi-use trails, and pedestrian pathways for assessing non-motorized mobility.
+          </div>
+        </div>
+      </div>
+    </a>
+
+    <!-- Placeholder/Example Entry 4 -->
+    <a href="product-accessibility-index.html" class="catalog-link" title="View Accessibility Index by Station">
+      <div class="catalog-entry">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/c/cb/Map_marker_icon_%E2%80%93_Nicolas_Mollet_%E2%80%93_Transport_Train_Station_%E2%80%93_Transportation_%E2%80%93_White.png" alt="Accessibility Index" class="catalog-icon">
+        <div class="catalog-content">
+          <div class="catalog-title">Accessibility Index by Station</div>
+          <div class="catalog-desc">
+            Example accessibility index for subway and commuter rail stations, highlighting essential services proximity.
+          </div>
+        </div>
+      </div>
+    </a>
+
+  </div>
 </body>
 </html>
