@@ -34,7 +34,6 @@
     "url": "https://en.wikipedia.org/wiki/Accessibility",
     "category": "Transportation"
   },
-
   {
     "title": "Census Blocks (2021)",
     "desc": "Spatial boundaries and statistics for census blocks from the 2021 Canadian Census.",
@@ -70,7 +69,6 @@
     "url": "https://en.wikipedia.org/wiki/Immigration_to_Canada",
     "category": "Census"
   },
-
   {
     "title": "Public Facilities Inventory",
     "desc": "Map and list of all public buildings, community centers, and recreation facilities in the region.",
@@ -106,7 +104,6 @@
     "url": "https://en.wikipedia.org/wiki/Sewerage",
     "category": "Infrastructure"
   },
-
   {
     "title": "Flood Susceptibility Index",
     "desc": "Raster index for identifying flood-prone zones based on topography and rainfall data.",
@@ -142,7 +139,6 @@
     "url": "https://en.wikipedia.org/wiki/Climate_change_vulnerability",
     "category": "Climate"
   },
-
   {
     "title": "Canadian Index of Multiple Deprivation",
     "desc": "Composite measure of deprivation using census and health indicators.",
