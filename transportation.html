@@ -19,13 +19,18 @@
     nav a:hover, nav a.active { background: #18325d; }
     h1 { color: #214478; }
 
-    /* Catalog styles */
     .catalog {
       display: flex;
       flex-direction: column;
       gap: 2em;
       margin-top: 2em;
       max-width: 800px;
+    }
+    .catalog-link {
+      text-decoration: none;
+      color: inherit;
+      display: block;
+      width: 100%;
     }
     .catalog-entry {
       display: flex;
@@ -36,6 +41,7 @@
       padding: 1.2em 1.7em;
       transition: box-shadow 0.2s, background 0.2s;
       border-left: 6px solid #214478;
+      min-height: 80px;
     }
     .catalog-entry:hover {
       box-shadow: 0 4px 18px rgba(33,68,120,0.13);
@@ -64,13 +70,6 @@
       margin: 0.5em 0 0 0;
       color: #555;
       font-size: 1em;
-    }
-    .catalog-link {
-      text-decoration: none;
-      color: inherit;
-      display: block;
-      width: 100%;
-      height: 100%;
     }
   </style>
 </head>
@@ -106,7 +105,7 @@
     </a>
 
     <!-- 2. Placeholder Entry 1 -->
-    <a href="#" class="catalog-link" title="View Multi-Modal Network Example">
+    <a href="javascript:void(0)" class="catalog-link" title="Multi-Modal Network Example">
       <div class="catalog-entry">
         <img src="https://upload.wikimedia.org/wikipedia/commons/5/5c/Generic_train_icon.png" alt="Multi-Modal" class="catalog-icon">
         <div class="catalog-content">
@@ -119,7 +118,7 @@
     </a>
 
     <!-- 3. Placeholder Entry 2 -->
-    <a href="#" class="catalog-link" title="View Transit Ridership Trends">
+    <a href="javascript:void(0)" class="catalog-link" title="Transit Ridership Trends">
       <div class="catalog-entry">
         <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e7/Bus-icon.svg/1024px-Bus-icon.svg.png" alt="Ridership Trends" class="catalog-icon">
         <div class="catalog-content">
@@ -132,7 +131,7 @@
     </a>
 
     <!-- 4. Placeholder Entry 3 -->
-    <a href="#" class="catalog-link" title="View Active Transportation Paths">
+    <a href="javascript:void(0)" class="catalog-link" title="Active Transportation Paths">
       <div class="catalog-entry">
         <img src="https://upload.wikimedia.org/wikipedia/commons/0/0c/Cycling_icon.png" alt="Active Transportation" class="catalog-icon">
         <div class="catalog-content">
@@ -145,7 +144,7 @@
     </a>
 
     <!-- 5. Placeholder Entry 4 -->
-    <a href="#" class="catalog-link" title="View Accessibility Index by Station">
+    <a href="javascript:void(0)" class="catalog-link" title="Accessibility Index by Station">
       <div class="catalog-entry">
         <img src="https://upload.wikimedia.org/wikipedia/commons/c/cb/Map_marker_icon_%E2%80%93_Nicolas_Mollet_%E2%80%93_Transport_Train_Station_%E2%80%93_Transportation_%E2%80%93_White.png" alt="Accessibility Index" class="catalog-icon">
         <div class="catalog-content">
