@@ -7,25 +7,175 @@
     "category": "Transportation"
   },
   {
+    "title": "Multi-Modal Network Example",
+    "desc": "Sample dataset for integrated multi-modal transit networks, including bus, subway, and cycling connections.",
+    "icon": "https://upload.wikimedia.org/wikipedia/commons/5/5c/Generic_train_icon.png",
+    "url": "https://en.wikipedia.org/wiki/Multimodal_transport",
+    "category": "Transportation"
+  },
+  {
+    "title": "Transit Ridership Trends",
+    "desc": "Data visualizing annual and monthly ridership for key transit lines and stations from 2010-2023.",
+    "icon": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e7/Bus-icon.svg/1024px-Bus-icon.svg.png",
+    "url": "https://en.wikipedia.org/wiki/Public_transport",
+    "category": "Transportation"
+  },
+  {
+    "title": "Active Transportation Paths",
+    "desc": "Sample layer of cycling lanes, multi-use trails, and pedestrian pathways for assessing non-motorized mobility.",
+    "icon": "https://upload.wikimedia.org/wikipedia/commons/0/0c/Cycling_icon.png",
+    "url": "https://en.wikipedia.org/wiki/Active_transport",
+    "category": "Transportation"
+  },
+  {
+    "title": "Accessibility Index by Station",
+    "desc": "Example accessibility index for subway and commuter rail stations, highlighting essential services proximity.",
+    "icon": "https://upload.wikimedia.org/wikipedia/commons/c/cb/Map_marker_icon_%E2%80%93_Nicolas_Mollet_%E2%80%93_Transport_Train_Station_%E2%80%93_Transportation_%E2%80%93_White.png",
+    "url": "https://en.wikipedia.org/wiki/Accessibility",
+    "category": "Transportation"
+  },
+
+  {
     "title": "Census Blocks (2021)",
     "desc": "Spatial boundaries and statistics for census blocks from the 2021 Canadian Census.",
     "icon": "https://upload.wikimedia.org/wikipedia/commons/8/88/Map_icon.png",
-    "url": "product-census-blocks.html",
+    "url": "https://en.wikipedia.org/wiki/Census",
     "category": "Census"
   },
+  {
+    "title": "Population & Demographics",
+    "desc": "Summary tables on population, age, and gender breakdowns by region.",
+    "icon": "https://upload.wikimedia.org/wikipedia/commons/9/9b/Population_icon.svg",
+    "url": "https://en.wikipedia.org/wiki/Demographics_of_Canada",
+    "category": "Census"
+  },
+  {
+    "title": "Household Income Distribution",
+    "desc": "Income group distributions and socioeconomic indicators at neighbourhood level.",
+    "icon": "https://upload.wikimedia.org/wikipedia/commons/4/4b/Blue_house_icon.png",
+    "url": "https://en.wikipedia.org/wiki/Socioeconomic_status",
+    "category": "Census"
+  },
+  {
+    "title": "Educational Attainment",
+    "desc": "Data on highest education levels achieved by residents in different communities.",
+    "icon": "https://upload.wikimedia.org/wikipedia/commons/5/55/Graduation_cap_icon.svg",
+    "url": "https://en.wikipedia.org/wiki/Education_in_Canada",
+    "category": "Census"
+  },
+  {
+    "title": "Immigrant Population",
+    "desc": "Proportion of residents born outside Canada, by census tract and neighbourhood.",
+    "icon": "https://upload.wikimedia.org/wikipedia/commons/d/dc/Globe_icon.svg",
+    "url": "https://en.wikipedia.org/wiki/Immigration_to_Canada",
+    "category": "Census"
+  },
+
   {
     "title": "Public Facilities Inventory",
     "desc": "Map and list of all public buildings, community centers, and recreation facilities in the region.",
     "icon": "https://upload.wikimedia.org/wikipedia/commons/7/73/Infrastructure_icon.png",
-    "url": "product-public-facilities.html",
+    "url": "https://en.wikipedia.org/wiki/Public_facility",
     "category": "Infrastructure"
   },
   {
+    "title": "Utilities Network",
+    "desc": "Geospatial layers of electrical grids, water mains, and telecommunications lines.",
+    "icon": "https://upload.wikimedia.org/wikipedia/commons/5/55/Power_icon.png",
+    "url": "https://en.wikipedia.org/wiki/Utility",
+    "category": "Infrastructure"
+  },
+  {
+    "title": "Major Roadways",
+    "desc": "Dataset of major arterial roads, highways, and expressways, suitable for route and traffic analysis.",
+    "icon": "https://upload.wikimedia.org/wikipedia/commons/a/a5/Road_icon.png",
+    "url": "https://en.wikipedia.org/wiki/Road",
+    "category": "Infrastructure"
+  },
+  {
+    "title": "Bridges Database",
+    "desc": "Locations and metadata of bridges, including structural type and inspection status.",
+    "icon": "https://upload.wikimedia.org/wikipedia/commons/1/1e/Bridge_icon.png",
+    "url": "https://en.wikipedia.org/wiki/Bridge",
+    "category": "Infrastructure"
+  },
+  {
+    "title": "Sewer Networks",
+    "desc": "Mapping of major sewer and drainage lines for urban areas.",
+    "icon": "https://upload.wikimedia.org/wikipedia/commons/c/c2/Sewer_icon.png",
+    "url": "https://en.wikipedia.org/wiki/Sewerage",
+    "category": "Infrastructure"
+  },
+
+  {
     "title": "Flood Susceptibility Index",
-    "desc": "Raster-based index of flood susceptibility for urban and peri-urban areas. Useful for risk assessments and policy support.",
+    "desc": "Raster index for identifying flood-prone zones based on topography and rainfall data.",
     "icon": "https://upload.wikimedia.org/wikipedia/commons/1/19/Weather_icon_-_rain.svg",
-    "url": "product-flood-susceptibility.html",
+    "url": "https://en.wikipedia.org/wiki/Flood_risk_assessment",
     "category": "Climate"
+  },
+  {
+    "title": "Temperature Trends",
+    "desc": "Time series and spatial grids for monthly and annual mean temperature.",
+    "icon": "https://upload.wikimedia.org/wikipedia/commons/c/c3/Temperature_icon.png",
+    "url": "https://en.wikipedia.org/wiki/Climate_of_Canada",
+    "category": "Climate"
+  },
+  {
+    "title": "Precipitation Patterns",
+    "desc": "Annual and seasonal precipitation maps for long-term trend analysis.",
+    "icon": "https://upload.wikimedia.org/wikipedia/commons/5/53/Raindrop_icon.svg",
+    "url": "https://en.wikipedia.org/wiki/Precipitation",
+    "category": "Climate"
+  },
+  {
+    "title": "Urban Heat Island Map",
+    "desc": "Locations and magnitude of urban heat islands identified in Canadian cities.",
+    "icon": "https://upload.wikimedia.org/wikipedia/commons/f/f9/Heat_icon.svg",
+    "url": "https://en.wikipedia.org/wiki/Urban_heat_island",
+    "category": "Climate"
+  },
+  {
+    "title": "Climate Change Vulnerability",
+    "desc": "Composite vulnerability scores for neighbourhoods to climate hazards.",
+    "icon": "https://upload.wikimedia.org/wikipedia/commons/d/d3/Warning_icon.png",
+    "url": "https://en.wikipedia.org/wiki/Climate_change_vulnerability",
+    "category": "Climate"
+  },
+
+  {
+    "title": "Canadian Index of Multiple Deprivation",
+    "desc": "Composite measure of deprivation using census and health indicators.",
+    "icon": "https://upload.wikimedia.org/wikipedia/commons/c/cc/Index_icon.png",
+    "url": "https://en.wikipedia.org/wiki/Deprivation_index",
+    "category": "Other"
+  },
+  {
+    "title": "Socioeconomic Status Index",
+    "desc": "Regional mapping of socioeconomic status by income, education, and employment.",
+    "icon": "https://upload.wikimedia.org/wikipedia/commons/d/dc/SES_icon.png",
+    "url": "https://en.wikipedia.org/wiki/Socioeconomic_status",
+    "category": "Other"
+  },
+  {
+    "title": "Environmental Quality Index",
+    "desc": "Scores for neighbourhood environmental quality, including air and water.",
+    "icon": "https://upload.wikimedia.org/wikipedia/commons/6/6e/Environment_icon.png",
+    "url": "https://en.wikipedia.org/wiki/Environmental_quality",
+    "category": "Other"
+  },
+  {
+    "title": "Walkability Index",
+    "desc": "Measures of walkability for different neighbourhoods, integrating sidewalks, connectivity, and services.",
+    "icon": "https://upload.wikimedia.org/wikipedia/commons/b/bd/Walk_icon.png",
+    "url": "https://en.wikipedia.org/wiki/Walkability",
+    "category": "Other"
+  },
+  {
+    "title": "Health Accessibility Index",
+    "desc": "Index measuring accessibility to hospitals and health services by public transit.",
+    "icon": "https://upload.wikimedia.org/wikipedia/commons/8/84/Health_icon.png",
+    "url": "https://en.wikipedia.org/wiki/Accessibility",
+    "category": "Other"
   }
-  // ...add as many entries as you want
 ]
