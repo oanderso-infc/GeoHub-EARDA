@@ -52,17 +52,9 @@
       border: 1px solid #e2e2e2;
     }
     .catalog-content { flex: 1; }
-    .catalog-title {
-      margin: 0;
-      font-size: 1.18em;
-      color: #214478;
-      font-weight: bold;
-    }
-    .catalog-desc {
-      margin: 0.4em 0 0 0;
-      color: #555;
-      font-size: 1em;
-    }
+    .catalog-title { margin: 0; font-size: 1.18em; color: #214478; font-weight: bold; }
+    .catalog-desc { margin: 0.4em 0 0 0; color: #555; font-size: 1em; }
+    .empty-msg { color: #999; font-size: 1em; margin-bottom: 2em; }
   </style>
 </head>
 <body>
@@ -79,68 +71,51 @@
   <p>
     Browse census-related datasets, including population, household, and demographic variables.
   </p>
-  <div class="catalog">
+  <div id="category-entries" class="catalog"></div>
+  <script>
+    // Set the category to display for this page:
+    const category = "Census";
+    // Fetch and display entries
+    fetch('entries.json')
+      .then(resp => resp.json())
+      .then(entries => {
+        const container = document.getElementById('category-entries');
+        container.innerHTML = '';
+        const filtered = entries.filter(entry => entry.category === category);
+        if (filtered.length === 0) {
+          container.innerHTML = '<div class="empty-msg">No data products available yet.</div>';
+          return;
+        }
+        filtered.forEach(entry => {
+          const catalogLink = document.createElement('a');
+          catalogLink.className = 'catalog-link';
+          catalogLink.href = entry.url;
+          catalogLink.title = entry.title;
+          catalogLink.target = "_blank"; // Open in new tab for external links
 
-    <a href="https://en.wikipedia.org/wiki/Census" target="_blank" class="catalog-link">
-      <div class="catalog-entry">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/8/88/Map_icon.png" alt="Census" class="catalog-icon">
-        <div class="catalog-content">
-          <div class="catalog-title">Census Blocks (2021)</div>
-          <div class="catalog-desc">
-            Spatial boundaries and statistics for census blocks from the 2021 Canadian Census.
-          </div>
-        </div>
-      </div>
-    </a>
+          const catalogEntry = document.createElement('div');
+          catalogEntry.className = 'catalog-entry';
 
-    <a href="https://en.wikipedia.org/wiki/Demographics_of_Canada" target="_blank" class="catalog-link">
-      <div class="catalog-entry">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/9/9b/Population_icon.svg" alt="Demographics" class="catalog-icon">
-        <div class="catalog-content">
-          <div class="catalog-title">Population & Demographics</div>
-          <div class="catalog-desc">
-            Summary tables on population, age, and gender breakdowns by region.
-          </div>
-        </div>
-      </div>
-    </a>
+          const icon = document.createElement('img');
+          icon.className = 'catalog-icon';
+          icon.src = entry.icon;
+          icon.alt = entry.title;
 
-    <a href="https://en.wikipedia.org/wiki/Socioeconomic_status" target="_blank" class="catalog-link">
-      <div class="catalog-entry">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/4/4b/Blue_house_icon.png" alt="Households" class="catalog-icon">
-        <div class="catalog-content">
-          <div class="catalog-title">Household Income Distribution</div>
-          <div class="catalog-desc">
-            Income group distributions and socioeconomic indicators at neighbourhood level.
-          </div>
-        </div>
-      </div>
-    </a>
+          const content = document.createElement('div');
+          content.className = 'catalog-content';
+          content.innerHTML = `<div class="catalog-title">${entry.title}</div>
+            <div class="catalog-desc">${entry.desc}</div>`;
 
-    <a href="https://en.wikipedia.org/wiki/Education_in_Canada" target="_blank" class="catalog-link">
-      <div class="catalog-entry">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/5/55/Graduation_cap_icon.svg" alt="Education" class="catalog-icon">
-        <div class="catalog-content">
-          <div class="catalog-title">Educational Attainment</div>
-          <div class="catalog-desc">
-            Data on highest education levels achieved by residents in different communities.
-          </div>
-        </div>
-      </div>
-    </a>
+          catalogEntry.appendChild(icon);
+          catalogEntry.appendChild(content);
+          catalogLink.appendChild(catalogEntry);
 
-    <a href="https://en.wikipedia.org/wiki/Immigration_to_Canada" target="_blank" class="catalog-link">
-      <div class="catalog-entry">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/d/dc/Globe_icon.svg" alt="Immigration" class="catalog-icon">
-        <div class="catalog-content">
-          <div class="catalog-title">Immigrant Population</div>
-          <div class="catalog-desc">
-            Proportion of residents born outside Canada, by census tract and neighbourhood.
-          </div>
-        </div>
-      </div>
-    </a>
-
-  </div>
+          container.appendChild(catalogLink);
+        });
+      })
+      .catch(() => {
+        document.getElementById('category-entries').innerHTML = '<div class="empty-msg">Failed to load data entries.</div>';
+      });
+  </script>
 </body>
 </html>
