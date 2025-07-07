@@ -6,12 +6,31 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <style>
     body { font-family: Arial, sans-serif; margin: 2em; background: #fafbfc; }
-    nav { background: #214478; padding: 1em; margin: -2em -2em 2em -2em; text-align: center; }
-    nav a {
-      color: #fff; text-decoration: none; margin: 0 1.2em; font-weight: bold;
-      padding: 0.3em 1em; border-radius: 4px; transition: background 0.2s;
+    .flag-logo {
+      display: block;
+      position: absolute;
+      top: 24px;
+      left: 30px;
+      width: 52px;
+      height: auto;
+      border-radius: 7px;
+      box-shadow: 0 1px 4px rgba(50,50,50,0.12);
+      z-index: 10;
     }
-    nav a:hover, nav a.active { background: #18325d; }
+    @media (max-width: 600px) {
+      .flag-logo { top: 16px; left: 10px; width: 38px; }
+    }
+    nav { background: #214478; padding: 1em; margin: -2em -2em 2em -2em; text-align: center; margin-left: 80px !important; }
+    nav a {
+      color: #fff;
+      text-decoration: none;
+      margin: 0 1.2em;
+      font-weight: bold;
+      padding: 0.3em 1em;
+      border-radius: 4px;
+      transition: background 0.2s;
+    }
+    nav a:hover, nav.a.active { background: #18325d; }
     h1 { color: #214478; }
     h2 { color: #214478; margin-top: 2.5em; }
     .category-desc {
@@ -57,13 +76,25 @@
       background: #e5eaf3;
       border: 1px solid #e2e2e2;
     }
-    .catalog-content { flex: 1; }
-    .catalog-title { margin: 0; font-size: 1.12em; color: #214478; font-weight: bold; }
-    .catalog-desc { margin: 0.3em 0 0 0; color: #555; font-size: 0.99em; }
+    .catalog-content {
+      flex: 1;
+    }
+    .catalog-title {
+      margin: 0;
+      font-size: 1.12em;
+      color: #214478;
+      font-weight: bold;
+    }
+    .catalog-desc {
+      margin: 0.3em 0 0 0;
+      color: #555;
+      font-size: 0.99em;
+    }
     .empty-msg { color: #999; font-size: 1em; margin-bottom: 2em; }
   </style>
 </head>
 <body>
+  <img src="images/Canada%20flag.png" alt="Canada Flag" class="flag-logo">
   <nav>
     <a href="index.html" class="active">Home</a>
     <a href="about.html">About</a>
@@ -79,82 +110,72 @@
   </div>
 
   <!-- Census Data Section -->
-  <h2>Census Data</h2>
+  <h2 id="census-data">Census Data</h2>
   <div class="category-desc">
     Census Data includes population, socioeconomic, and demographic variables sourced from the latest national census. Use these datasets for community profiles, deprivation studies, and more.
   </div>
   <div id="census-entries" class="catalog"></div>
 
   <!-- Infrastructure Data Section -->
-  <h2>Infrastructure Data</h2>
+  <h2 id="infrastructure-data">Infrastructure Data</h2>
   <div class="category-desc">
     Infrastructure Data features spatial layers for public assets, utilities, and critical infrastructure networks. Useful for resilience assessment, capital planning, and service area analysis.
   </div>
   <div id="infrastructure-entries" class="catalog"></div>
 
   <!-- Climate Data Section -->
-  <h2>Climate Data</h2>
+  <h2 id="climate-data">Climate Data</h2>
   <div class="category-desc">
     Climate Data includes open geospatial datasets on precipitation, temperature, flood risk, and other environmental hazards. Suitable for climate risk mapping and adaptation research.
   </div>
   <div id="climate-entries" class="catalog"></div>
 
   <!-- Transportation Data Section -->
-  <h2>Transportation Data</h2>
+  <h2 id="transportation-data">Transportation Data</h2>
   <div class="category-desc">
     Transportation Data features datasets for transit lines, stations, accessibility metrics, and more. Analyze mobility, connectivity, and equity across the network.
   </div>
   <div id="transportation-entries" class="catalog"></div>
 
   <script>
-    // Category names as used in your JSON
     const categories = {
       Census: document.getElementById('census-entries'),
       Infrastructure: document.getElementById('infrastructure-entries'),
       Climate: document.getElementById('climate-entries'),
       Transportation: document.getElementById('transportation-entries')
     };
-
-    // Helper to create a catalog entry
     function createCatalogEntry(entry) {
       const catalogLink = document.createElement('a');
       catalogLink.className = 'catalog-link';
       catalogLink.href = entry.url;
       catalogLink.title = entry.title;
-
+      // Open external URLs in new tab
+      if (/^https?:\/\//.test(entry.url)) catalogLink.target = "_blank";
       const catalogEntry = document.createElement('div');
       catalogEntry.className = 'catalog-entry';
-
       const icon = document.createElement('img');
       icon.className = 'catalog-icon';
       icon.src = entry.icon;
       icon.alt = entry.title;
-
       const content = document.createElement('div');
       content.className = 'catalog-content';
       content.innerHTML = `<div class="catalog-title">${entry.title}</div>
         <div class="catalog-desc">${entry.desc}</div>`;
-
       catalogEntry.appendChild(icon);
       catalogEntry.appendChild(content);
       catalogLink.appendChild(catalogEntry);
-
       return catalogLink;
     }
-
-    // Fetch and display entries from entries.json
     fetch('entries.json')
       .then(resp => resp.json())
       .then(entries => {
         // Clear previous entries
         Object.values(categories).forEach(catDiv => catDiv.innerHTML = '');
-        // Add entries by category
         entries.forEach(entry => {
           if (categories[entry.category]) {
             categories[entry.category].appendChild(createCatalogEntry(entry));
           }
         });
-        // Add message if a category has no entries
         Object.entries(categories).forEach(([cat, catDiv]) => {
           if (!catDiv.children.length) {
             const msg = document.createElement('div');
