@@ -1,0 +1,31 @@
+[
+  {
+    "title": "SAM Score Approximation Project",
+    "desc": "Station Accessibility Measure (SAM) scores and visualizations for rapid transit stations.",
+    "icon": "data/SAM%20Approximaiton/station-sample-1.png",
+    "url": "0DP%20-%20product-sam-score.html",
+    "category": "Transportation"
+  },
+  {
+    "title": "Census Blocks (2021)",
+    "desc": "Spatial boundaries and statistics for census blocks from the 2021 Canadian Census.",
+    "icon": "https://upload.wikimedia.org/wikipedia/commons/8/88/Map_icon.png",
+    "url": "product-census-blocks.html",
+    "category": "Census"
+  },
+  {
+    "title": "Public Facilities Inventory",
+    "desc": "Map and list of all public buildings, community centers, and recreation facilities in the region.",
+    "icon": "https://upload.wikimedia.org/wikipedia/commons/7/73/Infrastructure_icon.png",
+    "url": "product-public-facilities.html",
+    "category": "Infrastructure"
+  },
+  {
+    "title": "Flood Susceptibility Index",
+    "desc": "Raster-based index of flood susceptibility for urban and peri-urban areas. Useful for risk assessments and policy support.",
+    "icon": "https://upload.wikimedia.org/wikipedia/commons/1/19/Weather_icon_-_rain.svg",
+    "url": "product-flood-susceptibility.html",
+    "category": "Climate"
+  }
+  // ...add as many entries as you want
+]
