@@ -17,38 +17,6 @@
       box-shadow: 0 1px 4px rgba(50,50,50,0.12);
       z-index: 10;
     }
-  
-    .catalog-icon {
-      width: 48px;
-      height: 48px;
-      margin-right: 1.3em;
-      flex-shrink: 0;
-      border-radius: 7px;
-      object-fit: cover;
-      background: #e5eaf3;
-      border: 1px solid #e2e2e2;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-weight: bold;
-      font-size: 1.45em;
-      color: #214478;
-      text-align: center;
-      box-sizing: border-box;
-    }
-    
-    .letter-avatar {
-      background: #e5eaf3;
-      color: #214478;
-      font-size: 1.45em;
-      font-weight: bold;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-
-    
     @media (max-width: 600px) {
       .flag-logo { top: 16px; left: 10px; width: 38px; }
     }
@@ -98,7 +66,7 @@
       box-shadow: 0 4px 18px rgba(33,68,120,0.13);
       background: #f2f8ff;
     }
-    .catalog-icon {
+    .catalog-icon, .letter-avatar {
       width: 48px;
       height: 48px;
       margin-right: 1.3em;
@@ -107,6 +75,30 @@
       object-fit: cover;
       background: #e5eaf3;
       border: 1px solid #e2e2e2;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
+      font-size: 1.45em;
+      color: #214478;
+      text-align: center;
+      box-sizing: border-box;
+    }
+    .catalog-icon img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 7px;
+      display: block;
+    }
+    .letter-avatar {
+      background: #e5eaf3;
+      color: #214478;
+      font-size: 1.45em;
+      font-weight: bold;
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
     .catalog-content {
       flex: 1;
@@ -184,21 +176,21 @@
       if (/^https?:\/\//.test(entry.url)) catalogLink.target = "_blank";
       const catalogEntry = document.createElement('div');
       catalogEntry.className = 'catalog-entry';
-    
-      // --- Begin: display image icon if present, else letter avatar ---
+
       let icon;
       if (entry.icon && entry.icon.trim() !== "") {
-        icon = document.createElement('img');
+        icon = document.createElement('div');
         icon.className = 'catalog-icon';
-        icon.src = entry.icon;
-        icon.alt = entry.title;
+        const img = document.createElement('img');
+        img.src = entry.icon;
+        img.alt = entry.title;
+        icon.appendChild(img);
       } else {
         icon = document.createElement('div');
         icon.className = 'catalog-icon letter-avatar';
         icon.textContent = entry.title ? entry.title[0].toUpperCase() : '?';
       }
-      // --- End: icon logic ---
-    
+
       const content = document.createElement('div');
       content.className = 'catalog-content';
       content.innerHTML = `<div class="catalog-title">${entry.title}</div>
